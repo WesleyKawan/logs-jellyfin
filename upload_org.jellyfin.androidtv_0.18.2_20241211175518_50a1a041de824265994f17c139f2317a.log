@@ -1,0 +1,203 @@
+---
+client: Jellyfin for Android TV
+client_version: 0.18.2
+client_repository: https://github.com/jellyfin/jellyfin-androidtv
+type: crash_report
+format: markdown
+---
+### Logs
+
+***Stack Trace***: 
+```log
+java.lang.IllegalStateException: FragmentManager is already executing transactions
+	at androidx.fragment.app.FragmentManager.ensureExecReady(FragmentManager.java:1947)
+	at androidx.fragment.app.FragmentManager.execSingleAction(FragmentManager.java:1977)
+	at androidx.fragment.app.BackStackRecord.commitNow(BackStackRecord.java:317)
+	at org.jellyfin.androidtv.ui.browsing.DestinationFragmentView.activateHistoryEntry(DestinationFragmentView.kt:159)
+	at org.jellyfin.androidtv.ui.browsing.DestinationFragmentView.navigate(DestinationFragmentView.kt:94)
+	at org.jellyfin.androidtv.ui.browsing.MainActivity.handleNavigationAction(MainActivity.kt:118)
+	at org.jellyfin.androidtv.ui.browsing.MainActivity.access$handleNavigationAction(MainActivity.kt:33)
+	at org.jellyfin.androidtv.ui.browsing.MainActivity$onCreate$2.invokeSuspend(MainActivity.kt:66)
+	at org.jellyfin.androidtv.ui.browsing.MainActivity$onCreate$2.invoke(Unknown Source:8)
+	at org.jellyfin.androidtv.ui.browsing.MainActivity$onCreate$2.invoke(Unknown Source:4)
+	at kotlinx.coroutines.flow.FlowKt__TransformKt$onEach$$inlined$unsafeTransform$1$2.emit(Emitters.kt:50)
+	at kotlinx.coroutines.flow.FlowKt__ChannelsKt.emitAllImpl$FlowKt__ChannelsKt(Channels.kt:33)
+	at kotlinx.coroutines.flow.FlowKt__ChannelsKt.access$emitAllImpl$FlowKt__ChannelsKt(Channels.kt:1)
+	at kotlinx.coroutines.flow.FlowKt__ChannelsKt$emitAllImpl$1.invokeSuspend(Unknown Source:14)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+	at kotlinx.coroutines.EventLoop.processUnconfinedEvent(EventLoop.common.kt:65)
+	at kotlinx.coroutines.DispatchedTaskKt.resumeUnconfined(DispatchedTask.kt:231)
+	at kotlinx.coroutines.DispatchedTaskKt.dispatch(DispatchedTask.kt:149)
+	at kotlinx.coroutines.CancellableContinuationImpl.dispatchResume(CancellableContinuationImpl.kt:470)
+	at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core(CancellableContinuationImpl.kt:504)
+	at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core$default(CancellableContinuationImpl.kt:493)
+	at kotlinx.coroutines.CancellableContinuationImpl.resumeWith(CancellableContinuationImpl.kt:359)
+	at kotlinx.coroutines.flow.SharedFlowImpl.tryEmit(SharedFlow.kt:414)
+	at org.jellyfin.androidtv.ui.navigation.NavigationRepositoryImpl.reset(NavigationRepository.kt:100)
+	at org.jellyfin.androidtv.ui.navigation.NavigationRepository$DefaultImpls.reset(NavigationRepository.kt:59)
+	at org.jellyfin.androidtv.ui.navigation.NavigationRepositoryImpl.reset(NavigationRepository.kt:62)
+	at org.jellyfin.androidtv.ui.playback.CustomPlaybackOverlayFragment.closePlayer(CustomPlaybackOverlayFragment.java:1300)
+	at org.jellyfin.androidtv.ui.playback.CustomPlaybackOverlayFragment.onViewCreated(CustomPlaybackOverlayFragment.java:217)
+	at androidx.fragment.app.Fragment.performViewCreated(Fragment.java:3152)
+	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:608)
+	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:286)
+	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:2214)
+	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:2115)
+	at androidx.fragment.app.FragmentManager.execSingleAction(FragmentManager.java:2002)
+	at androidx.fragment.app.BackStackRecord.commitNow(BackStackRecord.java:317)
+	at org.jellyfin.androidtv.ui.browsing.DestinationFragmentView.activateHistoryEntry(DestinationFragmentView.kt:159)
+	at org.jellyfin.androidtv.ui.browsing.DestinationFragmentView.onRestoreInstanceState(DestinationFragmentView.kt:187)
+	at android.view.View.dispatchRestoreInstanceState(View.java:20743)
+	at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3986)
+	at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3992)
+	at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3992)
+	at android.view.View.restoreHierarchyState(View.java:20721)
+	at com.android.internal.policy.PhoneWindow.restoreHierarchyState(PhoneWindow.java:2181)
+	at android.app.Activity.onRestoreInstanceState(Activity.java:1679)
+	at android.app.Activity.performRestoreInstanceState(Activity.java:1632)
+	at android.app.Instrumentation.callActivityOnRestoreInstanceState(Instrumentation.java:1356)
+	at android.app.ActivityThread.handleStartActivity(ActivityThread.java:3491)
+	at android.app.servertransaction.TransactionExecutor.performLifecycleSequence(TransactionExecutor.java:221)
+	at android.app.servertransaction.TransactionExecutor.cycleToPath(TransactionExecutor.java:201)
+	at android.app.servertransaction.TransactionExecutor.executeLifecycleState(TransactionExecutor.java:173)
+	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:97)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2066)
+	at android.os.Handler.dispatchMessage(Handler.java:106)
+	at android.os.Looper.loop(Looper.java:223)
+	at android.app.ActivityThread.main(ActivityThread.java:7656)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
+	Suppressed: kotlinx.coroutines.internal.DiagnosticCoroutineContextException: [StandaloneCoroutine{Cancelling}@85c56a9, Dispatchers.Main.immediate]
+
+```  
+***Logcat***: 
+```log
+12-11 14:55:11.325 I/DefaultRenderersFactory(25011): Loaded FfmpegAudioRenderer.
+12-11 14:55:11.364 D/ExoPlayerAudioPipeline(25011): Audio session id changed to 10817
+12-11 14:55:11.492 D/ExoPlayerAudioPipeline(25011): Applying gain (targetGain=null)
+12-11 14:55:11.730 I/lyfin.androidt(25011): Background young concurrent copying GC freed 10148(920KB) AllocSpace objects, 0(0B) LOS objects, 22% free, 3619KB/4691KB, paused 416us total 113.126ms
+12-11 14:55:12.029 W/lyfin.androidt(25011): Accessing hidden method Landroid/graphics/Canvas;->drawPatch(Landroid/graphics/NinePatch;Landroid/graphics/Rect;Landroid/graphics/Paint;)V (greylist-max-o, linking, denied)
+12-11 14:55:12.030 W/lyfin.androidt(25011): Accessing hidden method Landroid/graphics/Canvas;->drawPatch(Landroid/graphics/NinePatch;Landroid/graphics/RectF;Landroid/graphics/Paint;)V (greylist-max-o, linking, denied)
+12-11 14:55:12.071 D/NavigationRepositoryImpl(25011): Navigating to Fragment(fragment=class org.jellyfin.androidtv.ui.home.HomeFragment (Kotlin reflection is not available), arguments=Bundle[{}]) (via reset, clearHistory=true)
+12-11 14:55:12.071 D/StartupActivity(25011): Opening next activity Intent { flg=0x10004000 cmp=org.jellyfin.androidtv/.ui.browsing.MainActivity }
+12-11 14:55:12.158 D/ACRA    (25011): onActivityPaused class org.jellyfin.androidtv.ui.startup.StartupActivity
+12-11 14:55:12.186 I/ActivityThemeExtensionsKt(25011): Applying theme DARK
+12-11 14:55:12.247 D/ACRA    (25011): onActivityCreated class org.jellyfin.androidtv.ui.browsing.MainActivity
+12-11 14:55:12.303 W/LeanbackOverlayFragment(25011): PlaybackController is null, skipping initialization.
+12-11 14:55:12.328 I/HomeRowsFragment(25011): Updating audio queue in HomeFragment (onQueueStatusChanged)
+12-11 14:55:12.335 I/org.jellyfin.sdk.api.ktor.KtorClient(25011): GET http://177.124.158.3/servicon.play/UserViews?includeHidden=false
+12-11 14:55:12.337 V/io.ktor.client.plugins.HttpPlainText(25011): Adding Accept-Charset=UTF-8 to http://177.124.158.3/servicon.play/UserViews?includeHidden=false
+12-11 14:55:12.348 D/ACRA    (25011): onActivityStarted class org.jellyfin.androidtv.ui.browsing.MainActivity
+12-11 14:55:12.403 V/io.ktor.client.plugins.HttpCallValidator(25011): Validating response for request http://177.124.158.3/servicon.play/UserViews?includeHidden=false
+12-11 14:55:12.403 V/io.ktor.client.plugins.DefaultResponseValidation(25011): Skipping default response validation for http://177.124.158.3/servicon.play/UserViews?includeHidden=false
+12-11 14:55:12.409 V/io.ktor.client.plugins.defaultTransformers(25011): Transformed with default transformers response body for http://177.124.158.3/servicon.play/UserViews?includeHidden=false to interface io.ktor.utils.io.ByteReadChannel (Kotlin reflection is not available)
+12-11 14:55:12.566 D/CompatibilityChangeReporter(25011): Compat change id reported: 147798919; UID 10084; state: ENABLED
+12-11 14:55:12.566 I/lyfin.androidt(25011): Background concurrent copying GC freed 18908(990KB) AllocSpace objects, 2(72KB) LOS objects, 24% free, 4341KB/5788KB, paused 166us total 191.797ms
+12-11 14:55:12.601 D/NavigationRepositoryImpl(25011): Navigating to Fragment(fragment=class org.jellyfin.androidtv.ui.home.HomeFragment (Kotlin reflection is not available), arguments=Bundle[{}]) (via reset, clearHistory=false)
+12-11 14:55:12.622 D/CustomPlaybackOverlayFragment(25011): Stopping!
+12-11 14:55:12.647 I/org.jellyfin.sdk.api.ktor.KtorClient(25011): GET http://177.124.158.3/servicon.play/UserViews?includeHidden=false
+12-11 14:55:12.650 V/io.ktor.client.plugins.HttpPlainText(25011): Adding Accept-Charset=UTF-8 to http://177.124.158.3/servicon.play/UserViews?includeHidden=false
+12-11 14:55:12.672 W/LeanbackOverlayFragment(25011): PlaybackController is null, skipping initialization.
+12-11 14:55:12.705 V/io.ktor.client.plugins.HttpCallValidator(25011): Validating response for request http://177.124.158.3/servicon.play/UserViews?includeHidden=false
+12-11 14:55:12.705 V/io.ktor.client.plugins.DefaultResponseValidation(25011): Skipping default response validation for http://177.124.158.3/servicon.play/UserViews?includeHidden=false
+12-11 14:55:12.719 V/io.ktor.client.plugins.defaultTransformers(25011): Transformed with default transformers response body for http://177.124.158.3/servicon.play/UserViews?includeHidden=false to interface io.ktor.utils.io.ByteReadChannel (Kotlin reflection is not available)
+12-11 14:55:12.745 E/ACRA    (25011): ACRA caught a IllegalStateException for org.jellyfin.androidtv
+12-11 14:55:12.745 E/ACRA    (25011): java.lang.IllegalStateException: FragmentManager is already executing transactions
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.FragmentManager.ensureExecReady(FragmentManager.java:1947)
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.FragmentManager.execSingleAction(FragmentManager.java:1977)
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.BackStackRecord.commitNow(BackStackRecord.java:317)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.browsing.DestinationFragmentView.activateHistoryEntry(DestinationFragmentView.kt:159)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.browsing.DestinationFragmentView.navigate(DestinationFragmentView.kt:94)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.browsing.MainActivity.handleNavigationAction(MainActivity.kt:118)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.browsing.MainActivity.access$handleNavigationAction(MainActivity.kt:33)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.browsing.MainActivity$onCreate$2.invokeSuspend(MainActivity.kt:66)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.browsing.MainActivity$onCreate$2.invoke(Unknown Source:8)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.browsing.MainActivity$onCreate$2.invoke(Unknown Source:4)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.flow.FlowKt__TransformKt$onEach$$inlined$unsafeTransform$1$2.emit(Emitters.kt:50)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.flow.FlowKt__ChannelsKt.emitAllImpl$FlowKt__ChannelsKt(Channels.kt:33)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.flow.FlowKt__ChannelsKt.access$emitAllImpl$FlowKt__ChannelsKt(Channels.kt:1)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.flow.FlowKt__ChannelsKt$emitAllImpl$1.invokeSuspend(Unknown Source:14)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.EventLoop.processUnconfinedEvent(EventLoop.common.kt:65)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.DispatchedTaskKt.resumeUnconfined(DispatchedTask.kt:231)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.DispatchedTaskKt.dispatch(DispatchedTask.kt:149)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.CancellableContinuationImpl.dispatchResume(CancellableContinuationImpl.kt:470)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core(CancellableContinuationImpl.kt:504)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core$default(CancellableContinuationImpl.kt:493)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.CancellableContinuationImpl.resumeWith(CancellableContinuationImpl.kt:359)
+12-11 14:55:12.745 E/ACRA    (25011): 	at kotlinx.coroutines.flow.SharedFlowImpl.tryEmit(SharedFlow.kt:414)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.navigation.NavigationRepositoryImpl.reset(NavigationRepository.kt:100)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.navigation.NavigationRepository$DefaultImpls.reset(NavigationRepository.kt:59)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.navigation.NavigationRepositoryImpl.reset(NavigationRepository.kt:62)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.playback.CustomPlaybackOverlayFragment.closePlayer(CustomPlaybackOverlayFragment.java:1300)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.playback.CustomPlaybackOverlayFragment.onViewCreated(CustomPlaybackOverlayFragment.java:217)
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.Fragment.performViewCreated(Fragment.java:3152)
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:608)
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:286)
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:2214)
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:2115)
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.FragmentManager.execSingleAction(FragmentManager.java:2002)
+12-11 14:55:12.745 E/ACRA    (25011): 	at androidx.fragment.app.BackStackRecord.commitNow(BackStackRecord.java:317)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.browsing.DestinationFragmentView.activateHistoryEntry(DestinationFragmentView.kt:159)
+12-11 14:55:12.745 E/ACRA    (25011): 	at org.jellyfin.androidtv.ui.browsing.DestinationFragmentView.onRestoreInstanceState(DestinationFragmentView.kt:187)
+12-11 14:55:12.745 E/ACRA    (25011): 	at android.view.View.dispatchRestoreInstanceState(View.java:20743)
+12-11 14:55:12.745 E/ACRA    (25011): 	at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3986)
+12-11 14:55:12.745 E/ACRA    (25011): 	at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3992)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:3992)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.view.View.restoreHierarchyState(View.java:20721)
+12-11 14:55:12.746 E/ACRA    (25011): 	at com.android.internal.policy.PhoneWindow.restoreHierarchyState(PhoneWindow.java:2181)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.Activity.onRestoreInstanceState(Activity.java:1679)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.Activity.performRestoreInstanceState(Activity.java:1632)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.Instrumentation.callActivityOnRestoreInstanceState(Instrumentation.java:1356)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.ActivityThread.handleStartActivity(ActivityThread.java:3491)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.servertransaction.TransactionExecutor.performLifecycleSequence(TransactionExecutor.java:221)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.servertransaction.TransactionExecutor.cycleToPath(TransactionExecutor.java:201)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.servertransaction.TransactionExecutor.executeLifecycleState(TransactionExecutor.java:173)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:97)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2066)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.os.Handler.dispatchMessage(Handler.java:106)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.os.Looper.loop(Looper.java:223)
+12-11 14:55:12.746 E/ACRA    (25011): 	at android.app.ActivityThread.main(ActivityThread.java:7656)
+12-11 14:55:12.746 E/ACRA    (25011): 	at java.lang.reflect.Method.invoke(Native Method)
+12-11 14:55:12.746 E/ACRA    (25011): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+12-11 14:55:12.746 E/ACRA    (25011): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
+12-11 14:55:12.746 E/ACRA    (25011): 	Suppressed: kotlinx.coroutines.internal.DiagnosticCoroutineContextException: [StandaloneCoroutine{Cancelling}@85c56a9, Dispatchers.Main.immediate]
+12-11 14:55:12.746 D/ACRA    (25011): Building report
+12-11 14:55:12.753 D/ACRA    (25011): Starting collectors with priority FIRST
+12-11 14:55:12.755 D/ACRA    (25011): Calling collector org.acra.collector.DropBoxCollector
+12-11 14:55:12.756 D/ACRA    (25011): Collector org.acra.collector.DropBoxCollector completed
+12-11 14:55:12.756 D/ACRA    (25011): Calling collector org.acra.collector.StacktraceCollector
+12-11 14:55:12.757 D/ACRA    (25011): Calling collector org.acra.collector.LogCatCollector
+12-11 14:55:12.758 D/ACRA    (25011): Collector org.acra.collector.StacktraceCollector completed
+12-11 14:55:12.769 D/ACRA    (25011): Retrieving logcat output (buffer:default)...
+
+```  
+
+### App information
+
+***App version***: `0.18.2` (`180299`)  
+***Package name***: `org.jellyfin.androidtv`  
+***Build***: 
+```json
+{"BOARD":"sunnyvale","BOOTLOADER":"01.01.230209","BRAND":"Britania","CPU_ABI":"armeabi-v7a","CPU_ABI2":"armeabi","DEVICE":"sunnyvale","DISPLAY":"RTM5.220609.273","FINGERPRINT":"Britania\/SW5_Britania\/sunnyvale:11\/RTM5.220609.273\/9588871:user\/release-keys","HARDWARE":"mt5867","HOST":"abfarm-2004-4090","ID":"RTM5.220609.273","IS_DEBUGGABLE":false,"IS_EMULATOR":false,"MANUFACTURER":"skyworth","MODEL":"Britania Smart TV","PERMISSIONS_REVIEW_REQUIRED":true,"PRODUCT":"SW5_Britania","RADIO":"unknown","SUPPORTED_32_BIT_ABIS":["armeabi-v7a","armeabi"],"SUPPORTED_64_BIT_ABIS":[],"SUPPORTED_ABIS":["armeabi-v7a","armeabi"],"TAGS":"release-keys","TIME":1675998415000,"TYPE":"user","UNKNOWN":"unknown","USER":"android-build","VERSION":{"ACTIVE_CODENAMES":[],"BASE_OS":"","CODENAME":"REL","INCREMENTAL":"9588871","PREVIEW_SDK_FINGERPRINT":"REL","PREVIEW_SDK_INT":0,"RELEASE":"11","RELEASE_OR_CODENAME":"11","SDK":"30","SDK_INT":30,"SECURITY_PATCH":"2023-02-01"}}
+```  
+***Build config***: 
+```json
+{"APPLICATION_ID":"org.jellyfin.androidtv","BUILD_TYPE":"release","DEBUG":false,"DEVELOPMENT":false,"VERSION_CODE":180299,"VERSION_NAME":"0.18.2"}
+```  
+
+### Device information
+
+***Android version***: `11`  
+***Device brand***: `Britania`  
+***Device product***: `SW5_Britania`  
+***Device model***: `Britania Smart TV`  
+
+### Crash information
+
+***Start time***: `2024-12-11T14:55:09.413-03:00`  
+***Crash time***: `2024-12-11T14:55:12.850-03:00`  
+
